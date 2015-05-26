@@ -83,13 +83,13 @@ public class TamaMain {
 		int specie = MyUtil.randomInt(0, 2);
 		switch (specie) {
 		
-		case 0: return new Tamabase(nome, affetto, cibo); break;
+		case 0: return new Tamagotchi(nome, affetto, cibo); break;
 		
 		case 1: return new Tamatriste(nome, affetto, cibo); break;
 		
 		case 2: return new Tamagordo(nome, affetto, cibo); break;
 		
-		default: return new Tamabase(nome, affetto, cibo); break;
+		default: return new Tamagotchi(nome, affetto, cibo); break;
 		
 		}
 		
