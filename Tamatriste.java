@@ -1,31 +1,66 @@
-
-public class TamaTriste extends Tamagotchi {
+public class Tamatriste extends Tamagotchi {
 	
-	private String nome;
-	private  final static double AFFETTO = 0;
-	private double cibo;
+	private final static double AFFETTO_TAMATRISTE = 0;
+	private final static String SPECIE = "TamaTriste";
 	
-	public TamaTriste ( String nome, double cibo){
+	public Tamatriste (String nome, double affetto, double cibo) throws IllegalArgumentException {
 		
-		super(nome, AFFETTO, cibo);
+		super(nome, AFFETTO_TAMATRISTE, cibo);
+		this.specie = SPECIE;
 
 	}
 	
-	
-	public boolean isAlive(){
+	public Tamatriste (String nome, double cibo) throws IllegalArgumentException {
 		
-		if(cibo<=MAX || cibo>=MIN){
-			return false;
+		super(nome, AFFETTO_TAMATRISTE, cibo);
+		this.specie = SPECIE;
+
+	}
+
+	public Tamatriste (double cibo) throws IllegalArgumentException {
+		
+		super(AFFETTO_TAMATRISTE, cibo);
+		this.specie = SPECIE;
+
+	}
+	
+	@Override
+	public void receiveCaresses (int carezze){
+		
+		this.cibo -= COST_CAREZZE*carezze;
+		
+		controllaValori();
+		
+	}
+	
+	@Override
+	public void receiveCookies (int biscotti) {
+		
+		int i=0;
+		
+		for (i=0; i<biscotti; i++) {
+			
+			this.cibo += COST_BISCOTTI_1*(this.cibo);
+			
 		}
 		
-		return true;
+		controllaValori();
+		
 	}
 	
-	public boolean isHappy(){
+	@Override
+	public boolean isAlive (){
+		
+		if (this.cibo <= MAX || this.cibo >= MIN) return false;
+		return true;
+		
+	}
+	
+	@Override
+	public boolean isHappy (){
 		
 		return false;
+		
 	}
-	
-	
 	
 }
